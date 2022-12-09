@@ -1,5 +1,6 @@
-import { execSync } from 'child_process'
-import { defineNuxtModule, createResolver, useLogger } from '@nuxt/kit'
+import { resolve } from 'path'
+import { defineNuxtModule, createResolver, useLogger, addServerPlugin, resolvePath, addImportsDir, extendViteConfig, addServerHandler } from '@nuxt/kit'
+
 export interface ModuleOptions {
   isEnabled: boolean
 }
@@ -9,21 +10,29 @@ const defaults: ModuleOptions = {
   isEnabled: true
 }
 
+/**
+ * Takes a path to a file, makes it absolute and then sets the `DATABASE_URL` environment variable to a value of the form `file:/path/to/db.sqlite`.
+ *
+ * This method can be helpful for development and testing to ensure that all code uses the same, absolute `db.sqlite` file.
+ *
+ * @param pathToSqliteFile string The location of the `db.sqlite` file. E.g.: `./db.sqlite` or `db.sqlite` or `/Users/test/nuxt-prisma/db.sqlite`
+ * @param environmentVariableName string Name of the environment variable to export the `file:/...` database url to, this is the name that prisma uses in the `schema.prisma` `env(...)` directive
+ */
+export const setAbsoluteSqliteDatabaseUrlForPrisma = (pathToSqliteFile: string = resolve('./db.sqlite'), environmentVariableName = 'DATABASE_URL') => {
+  if (process.env.DATABASE_URL) {
+    // User or nuxt set their own `DATABASE_URL`, do not overwrite it
+    return
+  }
+
+  // We need to resolve again in case a relative path was passed
+  const absoluteDbPath = `file:${resolve(pathToSqliteFile)}`
+  process.env[environmentVariableName] = absoluteDbPath
+}
+
 export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: `@sidebase/${PACKAGE_NAME}`,
     configKey: 'prisma'
-  },
-  hooks: {
-    'nitro:config': (nitroConfig) => {
-      console.log('nitro handlers are', nitroConfig.handlers)
-    },
-    'nitro:init': (nitro) => {
-      console.log('nitro handlers init are', nitro.options.handlers)
-    },
-    'nitro:build:before': (nitro) => {
-      console.log('nitro handlers before build are', nitro.options.handlers)
-    }
   },
   defaults,
   setup (moduleOptions, nuxt) {
@@ -35,19 +44,19 @@ export default defineNuxtModule<ModuleOptions>({
       return
     }
 
-    logger.info('Setting up prisma...')
+    logger.info('`nuxt-prisma` setup starting')
 
-    // 2. Locate runtime directory and transpile module
+    // 2. Locate runtime directory
     const { resolve } = createResolver(import.meta.url)
 
-    // 3. Setup middleware, use `.unshift` to ensure (reasonably well) that the prisma middleware is first
+    // 3. Setup middleware
     const handler = resolve('./runtime/server/middleware/prisma')
     const serverHandler = {
       middleware: true,
       handler
     }
-    nuxt.options.serverHandlers.unshift(serverHandler)
+    addServerHandler(serverHandler)
 
-    logger.info('Prisma setup complete, use the client as `event.context.prisma` in your api event handlers')
+    logger.info('`nuxt-prisma` setup done')
   }
 })

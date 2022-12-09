@@ -57,3 +57,4 @@ Temporary Items
 
 # sqlite
 *.sqlite
+*.sqlite-journal
