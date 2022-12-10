@@ -1,38 +1,27 @@
 {
-  "author": "sidestream-tech <support@sidestream.tech>",
+  "author": "sidestream-tech <sidebase@sidestream.tech>",
   "bugs": {
     "url": "https://github.com/sidebase/nuxt-prisma/issues/new"
   },
   "homepage": "https://github.com/sidebase/nuxt-prisma",
   "name": "@sidebase/nuxt-prisma",
-  "version": "0.0.3-alpha.2",
+  "version": "0.0.3-alpha.13",
   "license": "MIT",
   "type": "module",
-  "exports": {
-    ".": {
-      "import": "./dist/module.mjs",
-      "require": "./dist/module.cjs"
-    }
-  },
-  "main": "./dist/module.cjs",
-  "types": "./dist/types.d.ts",
+  "main": "./nuxt-prisma/nuxt.config.ts",
   "files": [
-    "dist"
+    "nuxt-prisma"
   ],
   "scripts": {
-    "prepack": "nuxt-module-build",
     "dev": "cd playground && npm run dev",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.0.0",
     "@prisma/client": "^4.6.1",
-    "nitropack": "^1.0.0"
+    "h3": "^1.0.1"
   },
   "devDependencies": {
-    "@nuxt/module-builder": "^0.2.1",
-    "@nuxt/schema": "^3.0.0",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "eslint": "^8.27.0",
     "nuxt": "^3.0.0",

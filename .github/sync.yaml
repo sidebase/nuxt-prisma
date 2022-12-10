@@ -1,0 +1,8 @@
+sidebase/nuxt-prisma:
+  - docs/content
+  - docs/public
+sidebase/docs:
+  - source: docs/content/
+    dest: content/4.nuxt-prisma/
+  - source: docs/public/
+    dest: public/

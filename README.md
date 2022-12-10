@@ -2,44 +2,23 @@
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![GitHub stars](https://badgen.net/github/stars/sidebase/nuxt-session)](https://GitHub.com/sidebase/nuxt-session/)
+[![GitHub stars](https://badgen.net/github/stars/sidebase/nuxt-prisma)](https://GitHub.com/sidebase/nuxt-prisma/)
 [![License][license-src]][license-href]
 [![Follow us on Twitter](https://badgen.net/badge/icon/twitter?icon=twitter&label)](https://twitter.com/sidebase_io)
 [![Join our Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/9MUHR8WT9B)
 
-> Nuxt prisma module to get a global instance of prisma for optimal app-performance as recommended [by the prisma docs](https://www.prisma.io/docs/guides/performance-and-optimization/connection-management#long-running-processes) and make working with prisma feel like a breeze.
+> `nuxt-prisma` is an open source Nuxt 3 layer that provides an Prisma ORM integration for Nuxt 3 applications.
 
 ## Quick start
 
-1. Install the package:
-    ```bash
-    npm i -D @sidebase/nuxt-prisma
-    ```
-2. Add the package to your `nuxt.config.ts`:
-    ```bash
-    export default defineNuxtConfig({
-      modules: ['@sidebase/nuxt-prisma'],
-    })
-    ```
-3. Done! You can now access prisma inside your server-side event handlers (e.g., from `server/api` files):
-    ```ts
-    import { eventHandler } from 'h3'
+Follow the [Quick Start documentation](https://sidebase.io/nuxt-prisma/getting-started) to get going.
 
-    // Select 1 from the database and return it
-    export default eventHandler(event => event.context.prisma.$queryRaw`SELECT 1;`)
-    ```
+`nuxt-prisma` is a part of `sidebase`, the productive Nuxt 3 starter. If you want to have a template that has `nuxt-prisma` and the Prisma CLI integrated out of the box, use sidebase:
+```sh
+npx nuxi@latest init -t community/sidebase
+```
 
-## Features
-
-- ✔️ TODO
-
-
-## Development
-
-- Run `npm run dev:prepare` to generate type stubs.
-- Use `npm run dev` to start [playground](./playground) in development mode.
-
-
+Read the [sidebase starter docs](https://sidebase.io/sidebase/getting-started) for more.
 
 <!-- Badges -->
 [npm-version-src]: https://img.shields.io/npm/v/@sidebase/nuxt-prisma/latest.svg

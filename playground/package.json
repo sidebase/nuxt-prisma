@@ -1,7 +1,0 @@
-{
-  "private": true,
-  "name": "my-module-playground",
-  "scripts": {
-    "dev": "npx prisma generate && nuxi dev"
-  }
-}
