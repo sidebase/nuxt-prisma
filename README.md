@@ -15,7 +15,7 @@ Follow the [Quick Start documentation](https://sidebase.io/nuxt-prisma/getting-s
 
 `nuxt-prisma` is a part of `sidebase`, the productive Nuxt 3 starter. If you want to have a template that has `nuxt-prisma` and the Prisma CLI integrated out of the box, use sidebase:
 ```sh
-npx nuxi@latest init -t community/sidebase
+npm create sidebase@latest
 ```
 
 Read the [sidebase starter docs](https://sidebase.io/sidebase/getting-started) for more.
