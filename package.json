@@ -13,9 +13,8 @@
     "nuxt-prisma"
   ],
   "scripts": {
-    "dev": "cd playground && npm run dev",
-    "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
+    "dev": "cd nuxt-prisma && nuxi dev",
+    "dev:build": "nuxi build nuxt-prisma"
   },
   "dependencies": {
     "@prisma/client": "^4.7.1",
