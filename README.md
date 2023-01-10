@@ -7,6 +7,13 @@
 [![Follow us on Twitter](https://badgen.net/badge/icon/twitter?icon=twitter&label)](https://twitter.com/sidebase_io)
 [![Join our Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/9MUHR8WT9B)
 
+**DEPRECATION NOTICE:** `nuxt-prisma` will be depreacated at the 31.01.2023 - read https://github.com/sidebase/nuxt-prisma/issues/6 for reasoning and process. The new process to add Prisma to Nuxt 3 sidebase apps is to run:
+```sh
+# also works with `pnpm` and `yarn`
+> npm create sidebase@latest
+```
+select the `Merino` stack and then the `Prisma ORM` option. Need help? Ask away: https://discord.gg/9MUHR8WT9B
+
 > `nuxt-prisma` is an open source Nuxt 3 layer that provides an Prisma ORM integration for Nuxt 3 applications.
 
 ## Quick start
