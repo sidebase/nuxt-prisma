@@ -12,7 +12,7 @@
 # also works with `pnpm` and `yarn`
 > npm create sidebase@latest
 ```
-select the `Merino` stack and then the `Prisma ORM` option. Need help? Ask away: https://discord.gg/9MUHR8WT9B
+select the `Merino` stack and then the `Prisma ORM` option. Need help? Ask away: https://discord.gg/NDDgQkcv3s
 
 > `nuxt-prisma` is an open source Nuxt 3 layer that provides an Prisma ORM integration for Nuxt 3 applications.
 
